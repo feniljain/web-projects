@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/fenil/anaconda3/envs/dbmsproject/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}

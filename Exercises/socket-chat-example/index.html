@@ -1,0 +1,195 @@
+<!doctype hmtl>
+<html>
+  <head>
+    <title>Socket.io Chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        var socket=io.connect();
+        var $messageForm=$('#messageForm');
+        var $message=$('#input');
+        var $chat=$("#display");
+        var $feedback=$("#feedback");
+        var $username=$("#username");
+        var $userForm=$("#userForm");
+        var $users=$("#onlineusers");
+
+        $messageForm.submit(function(e){
+          e.preventDefault();
+          socket.emit('send message',$message.val());
+          $message.val('');
+          document.getElementById("feedback").innerHTML='';
+        });
+
+        $message.keypress(function()
+         {
+           socket.emit('typing',"");
+         });
+
+        $userForm.submit(function(e){
+          e.preventDefault();
+          socket.emit('new user',$username.val());
+          $message.prop("disabled",false);
+          //$username.val('');
+        });
+       
+        socket.on('typing user',function(data){
+          //console.log(data);
+          //$feedback.append('<div class="well">'+data+'</div>');
+          //$feedback.val(data);
+          document.getElementById("feedback").innerHTML='<p><em>'+data+'</em></p>';
+        });
+
+       socket.on('get users',(data)=>
+        {
+          var html='';
+          for(i=0;i<data.length;i++)
+           {
+             html+="<li class='list-group-item'>"+data[i]+'<li>';
+           }
+          $users.html(html);
+        });
+
+       socket.on('new message', function(data){
+          document.getElementById("feedback").innerHTML='';
+         $chat.append('<div class="well"><strong>'+data.user+'</strong>:'+data.msg+'</div>');
+       });
+      });
+      /*function buttonClick()
+       {
+        var socket=io();
+         var input=document.getElementById("input");
+         socket.emit('chat message',input.value);
+         //console.log(input.value);
+          //console.log(document.getElementById("msg").value);
+          //document.getElementById("display").value
+         //console.log("Clicked!");
+         //document.getElementById("onlineusers").innerHTML+="<li class='list-group-item'>Fenil!<li>";
+         socket.on('chat message',function(msg)
+          {
+            console.log("Frontend Socket");
+            document.getElementById("display").innerHTML+="<li>"+msg+"<li>";
+          });
+          input.value='';
+       }*/
+       /*console.log("Still working?");
+       socket.on('chat message',function(msg)
+          {
+            console.log("Frontend Socket");
+            document.getElementById("display").innerHTML="<li>"+msg+"<li>";
+          });*/
+    </script>
+    <style>
+      body{
+        background: #1A2980;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      }
+      #heading
+       {
+         text-decoration: underline;
+         color: red;
+         text-align: center;
+         font-size: 4rem;
+       }
+      #onlineusers
+       {
+         /*border: 10px dotted black;
+         <div id="onlineusers">
+        <h1>Somehting</h1>
+      </div>*/
+         max-width: 230px;
+         /*border: 3px solid black;*/
+       }
+      .giveborder
+       {
+          border: 1px solid black;
+       }
+      .timepass
+       {
+         /*min-width: 230px;
+         max-width: 230px;*/
+         width: 214px;
+         height: 50px;
+         margin-left: 0px;
+       }
+      .message
+       {
+         /*margin-left: 200px; */
+         position: relative;
+         margin: 0px;
+       }
+      .btnalign
+       {
+         position: relative;
+         margin-left: 0px;
+         margin-right: 550px;
+         margin-top: 12px;
+        }
+      .identheading
+       {
+         margin-top: 50px;
+       }
+      #display
+       {
+         list-style: none;
+         text-indent: 0px;
+       }
+    </style>
+  </head>
+  <body>
+    <h1 id="heading">Let's Chat Some Fun Out</h1>
+    <div class="container identheading">
+      <div class="row">
+          <div class="col-md-3" id="onlineusers"> 
+              <!--<ul id="onlineusers" class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>-->
+            </div>
+          <div class="col-md-9" id="msg">
+            <ul id="display">
+            </ul>
+            <div id="feedback"></div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+            <div class="timepass">
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="message">
+                <div>
+                    <label for="exampleFormControlTextarea1">Enter your nickname</label>
+                    <input class="form-control" type="text" id="username" placeholder="Enter your nickname">
+                    <form id="userForm">
+                        <input type="submit" class="btnalign btn btn-primary" value="Register"/>
+                    </form>
+                    <!--<button type="button" class="btnalign btn btn-primary" onclick="register();">Register</button>-->
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Message</label>
+                    <textarea class="form-control" id="input" rows="3" disabled="disabled"></textarea>
+                    <form id="messageForm">
+                      <input type="submit" class="btnalign btn btn-primary" value="Send Message"/>
+                    </form>
+                  </div>
+                <!--<p>Message:</p>
+                <textarea rows="4" cols="50" id="input"></textarea>
+                <button type="button" class="btnalign btn btn-primary" onclick="buttonClick();">Send</button>-->
+            </div>
+        </div>
+      </div>
+    </div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

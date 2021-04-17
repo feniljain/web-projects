@@ -1,0 +1,66 @@
+Choose colours:paletton.com
+CSS:https://css-tricks.com/
+Nice and free background images:www.unsplash.com
+Html and Css: w3schools
+Flexbox:http://flexboxfroggy.com/--->justify-content->row and align-items->column
+Can u use a property or not: caniuse.com
+Mastering transititons and transforms: https://thoughtbot.com/blog/transitions-and-transforms
+Perfect Backgrounds: https://landingstock.com/
+Add email service to your site: https://mailchimp.com/
+Animate using css: animate.css
+Prebuilt website templates: creative tim
+Css Grid:http://cssgridgarden.com/
+Cheat Sheet for CSS Grid: http://grid.malven.co/
+Media Query Cheat Sheet: https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+Free Design Resources: https://interfacer.xyz/
+Kevin Kelly
+Blogs: medium.com
+Cool CSS Stuff: codepen.io(Rafael Castro)
+Event Reference: https://developer.mozilla.org/en-US/docs/Web/Events
+Javascript KeyCodes: https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
+Babel: https://babeljs.io/repl/
+JS arrays: https://sdras.github.io/array-explorer/
+JS Equality Table: https://dorey.github.io/JavaScript-Equality-Table/
+Object.is(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+ECMAScript Language Specification: https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3
+JS Objects: https://sdras.github.io/object-explorer/
+JS Modules: https://medium.com/sungthecoder/javascript-module-module-loader-module-bundler-es6-module-confused-yet-6343510e7bde
+JS Modules: https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
+JS Book: https://github.com/getify/You-Dont-Know-JS/tree/master/async%20%26%20performance
+JS Learning resource: http://javascript.info/
+JS Learning resource: http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/
+Resources to get help from as a developer: https://zero-to-mastery.github.io/resources/
+trello: https://trello.com/ 
+To find API's: https://apilist.fun/
+To find API's: https://public-apis.xyz/
+Build and robots and build on arduino and raspberry pi using javascript: http://johnny-five.io/
+State of Javascript: Latest and most famous tools among developers: Just search "State of Javascript" in google.
+Learn SQL: https://www.codecademy.com/learn/learn-sql
+Learn SQL: https://www.khanacademy.org/computing/computer-programming/sql
+Best frameworks for server and database connection:
+(1)Knex.js
+(2)pg-promise
+Things which can be used on top of react: (1)REACT ROUTER(2)RAMDA(3)LODASH(4)GLAMAROUS(5)STYLED COMPONENTS(6)CSS MODULES
+(7)GATSBY.JS(For simple text based websites(It is very good(React documentation is made from it)))
+(8)Next.js(For server-side rendered apps)
+(9)Material UI
+(10)Semantic UI
+To make redux more better: (1)Reselect (2)Redux-saga(Of use there are a lot of asynchronous actions(At this time saga is preffered
+over thunk)).
+(3)Immutable.js
+
+Interview resources: 1. https://haseebq.com/how-to-break-into-tech-job-hunting-and-interviews/
+2. http://seldo.com/weblog/2014/08/26/you_suck_at_technical_interviews
+3. Offer Negotiation
+4. https://medium.freecodecamp.org/5-key-learnings-from-the-post-bootcamp-job-search-9a07468d2331
+5. https://blog.devmastery.com/how-to-win-the-coding-interview-71ae7102d685
+
+Complete web-developer manual: https://github.com/zero-to-mastery/complete-web-developer-manual
+Best resources(overall): https://github.com/zero-to-mastery/resources
+
+Security check of your website: npm audit
+
+justify-content: center;
+flex-direction: column-reverse;
+flex-wrap: wrap-reverse;
+align-items: baseline;
